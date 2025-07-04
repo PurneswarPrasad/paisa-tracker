@@ -238,17 +238,17 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-2 sm:p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-4 sm:mb-8">
           <div className="flex justify-between items-start mb-4">
             <div></div>
-            <div className="flex-1">
-              <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+            <div className="flex-1 px-4">
+              <h1 className="text-2xl sm:text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">
                 पैसा Tracker
               </h1>
-              <p className="text-gray-600 dark:text-gray-300 text-lg">
+              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-lg">
                 Track every penny, achieve every dream
               </p>
             </div>
@@ -270,58 +270,72 @@ const Index = () => {
         />
 
         {/* Summary Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 lg:gap-6 mb-4 sm:mb-8">
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-blue-200 dark:border-blue-700">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-blue-700 dark:text-blue-400 flex items-center gap-2">
-                <DollarSign className="w-5 h-5" />
-                Income
+            <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
+              <CardTitle className="text-blue-700 dark:text-blue-400 flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
+                <DollarSign className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Income</span>
+                <span className="sm:hidden">Inc</span>
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-blue-800 dark:text-blue-300">
+            <CardContent className="p-3 sm:p-6 pt-0">
+              <div className="text-lg sm:text-2xl font-bold text-blue-800 dark:text-blue-300">
+                ₹{(totalIncome / 1000).toFixed(0)}k
+              </div>
+              <div className="text-xs text-blue-600 dark:text-blue-400 sm:hidden">
                 ₹{totalIncome.toLocaleString('en-IN')}
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-green-200 dark:border-green-700">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-green-700 dark:text-green-400 flex items-center gap-2">
-                <TrendingDown className="w-5 h-5" />
+            <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
+              <CardTitle className="text-green-700 dark:text-green-400 flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
+                <TrendingDown className="w-4 h-4 sm:w-5 sm:h-5" />
                 Needs
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-green-800 dark:text-green-300">
+            <CardContent className="p-3 sm:p-6 pt-0">
+              <div className="text-lg sm:text-2xl font-bold text-green-800 dark:text-green-300">
+                ₹{(totalNeeds / 1000).toFixed(0)}k
+              </div>
+              <div className="text-xs text-green-600 dark:text-green-400 sm:hidden">
                 ₹{totalNeeds.toLocaleString('en-IN')}
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-orange-200 dark:border-orange-700">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-orange-700 dark:text-orange-400 flex items-center gap-2">
-                <TrendingUp className="w-5 h-5" />
+            <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
+              <CardTitle className="text-orange-700 dark:text-orange-400 flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
                 Wants
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-orange-800 dark:text-orange-300">
+            <CardContent className="p-3 sm:p-6 pt-0">
+              <div className="text-lg sm:text-2xl font-bold text-orange-800 dark:text-orange-300">
+                ₹{(totalWants / 1000).toFixed(0)}k
+              </div>
+              <div className="text-xs text-orange-600 dark:text-orange-400 sm:hidden">
                 ₹{totalWants.toLocaleString('en-IN')}
               </div>
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-purple-200 dark:border-purple-700">
-            <CardHeader className="pb-3">
-              <CardTitle className="text-purple-700 dark:text-purple-400 flex items-center gap-2">
-                <PiggyBank className="w-5 h-5" />
-                Investments
+            <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
+              <CardTitle className="text-purple-700 dark:text-purple-400 flex items-center gap-1 sm:gap-2 text-sm sm:text-base">
+                <PiggyBank className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span className="hidden sm:inline">Investments</span>
+                <span className="sm:hidden">Inv</span>
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-purple-800 dark:text-purple-300">
+            <CardContent className="p-3 sm:p-6 pt-0">
+              <div className="text-lg sm:text-2xl font-bold text-purple-800 dark:text-purple-300">
+                ₹{(totalInvestments / 1000).toFixed(0)}k
+              </div>
+              <div className="text-xs text-purple-600 dark:text-purple-400 sm:hidden">
                 ₹{totalInvestments.toLocaleString('en-IN')}
               </div>
             </CardContent>
@@ -331,9 +345,9 @@ const Index = () => {
             totalSavings >= 0 
               ? 'border-emerald-200 dark:border-emerald-700' 
               : 'border-red-200 dark:border-red-700'
-          }`}>
-            <CardHeader className="pb-3">
-              <CardTitle className={`flex items-center gap-2 ${
+          } col-span-2 sm:col-span-1`}>
+            <CardHeader className="pb-2 sm:pb-3 p-3 sm:p-6">
+              <CardTitle className={`flex items-center gap-1 sm:gap-2 text-sm sm:text-base ${
                 totalSavings >= 0 
                   ? 'text-emerald-700 dark:text-emerald-400' 
                   : 'text-red-700 dark:text-red-400'
@@ -341,11 +355,18 @@ const Index = () => {
                 Savings
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className={`text-2xl font-bold ${
+            <CardContent className="p-3 sm:p-6 pt-0">
+              <div className={`text-lg sm:text-2xl font-bold ${
                 totalSavings >= 0 
                   ? 'text-emerald-800 dark:text-emerald-300' 
                   : 'text-red-800 dark:text-red-300'
+              }`}>
+                ₹{(Math.abs(totalSavings) / 1000).toFixed(0)}k
+              </div>
+              <div className={`text-xs sm:hidden ${
+                totalSavings >= 0 
+                  ? 'text-emerald-600 dark:text-emerald-400' 
+                  : 'text-red-600 dark:text-red-400'
               }`}>
                 ₹{totalSavings.toLocaleString('en-IN')}
               </div>
@@ -354,59 +375,71 @@ const Index = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-center gap-4 mb-8">
-          <Button onClick={() => setShowIncomeForm(true)} className="bg-blue-600 hover:bg-blue-700">
-            <Plus className="w-4 h-4 mr-2" />
+        <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4 mb-4 sm:mb-8 px-2">
+          <Button 
+            onClick={() => setShowIncomeForm(true)} 
+            className="bg-blue-600 hover:bg-blue-700 text-sm sm:text-base py-2 sm:py-2.5"
+            size="sm"
+          >
+            <Plus className="w-4 h-4 mr-1 sm:mr-2" />
             Add Income
           </Button>
-          <Button onClick={() => setShowExpenseForm(true)} className="bg-orange-600 hover:bg-orange-700">
-            <Plus className="w-4 h-4 mr-2" />
+          <Button 
+            onClick={() => setShowExpenseForm(true)} 
+            className="bg-orange-600 hover:bg-orange-700 text-sm sm:text-base py-2 sm:py-2.5"
+            size="sm"
+          >
+            <Plus className="w-4 h-4 mr-1 sm:mr-2" />
             Add Expense
           </Button>
-          <Button onClick={() => setShowInvestmentForm(true)} className="bg-purple-600 hover:bg-purple-700">
-            <Plus className="w-4 h-4 mr-2" />
+          <Button 
+            onClick={() => setShowInvestmentForm(true)} 
+            className="bg-purple-600 hover:bg-purple-700 text-sm sm:text-base py-2 sm:py-2.5"
+            size="sm"
+          >
+            <Plus className="w-4 h-4 mr-1 sm:mr-2" />
             Add Investment
           </Button>
         </div>
 
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8 mb-4 sm:mb-8">
           <ExpenseChart monthlyData={generateMonthlyData()} />
           <SavingsChart monthlyData={generateMonthlyData()} />
         </div>
 
         {/* Lists */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-8 mb-4 sm:mb-8">
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-gray-800 dark:text-gray-100">Income Sources</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-gray-800 dark:text-gray-100 text-lg sm:text-xl">Income Sources</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6 pt-0">
               <IncomeList income={currentMonthIncome} onDelete={deleteIncome} />
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-gray-800 dark:text-gray-100">Recent Expenses</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-gray-800 dark:text-gray-100 text-lg sm:text-xl">Recent Expenses</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6 pt-0">
               <ExpenseList expenses={currentMonthExpenses.slice(0, 5)} onDelete={deleteExpense} />
             </CardContent>
           </Card>
 
           <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-            <CardHeader>
-              <CardTitle className="text-gray-800 dark:text-gray-100">Investments</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-gray-800 dark:text-gray-100 text-lg sm:text-xl">Investments</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 sm:p-6 pt-0">
               <InvestmentList investments={currentMonthInvestments} onDelete={deleteInvestment} />
             </CardContent>
           </Card>
         </div>
 
         {/* Category Summaries */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
           <CategorySummary 
             title="Needs Breakdown"
             expenses={needsExpenses}

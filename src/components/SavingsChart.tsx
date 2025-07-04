@@ -38,12 +38,12 @@ const SavingsChart: React.FC<SavingsChartProps> = ({ monthlyData }) => {
 
   return (
     <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="text-gray-800 dark:text-gray-100">Monthly Savings</CardTitle>
+      <CardHeader className="p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <CardTitle className="text-gray-800 dark:text-gray-100 text-lg sm:text-xl">Monthly Savings</CardTitle>
           {availableYears.length > 1 && (
             <Select value={selectedYear} onValueChange={setSelectedYear}>
-              <SelectTrigger className="w-32">
+              <SelectTrigger className="w-full sm:w-32">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent className="bg-white dark:bg-gray-800 z-50">
@@ -56,21 +56,22 @@ const SavingsChart: React.FC<SavingsChartProps> = ({ monthlyData }) => {
           )}
         </div>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-4 sm:p-6 pt-0">
         {chartData.length > 0 ? (
-          <ChartContainer config={chartConfig} className="h-[300px] w-full">
+          <ChartContainer config={chartConfig} className="h-[250px] sm:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+              <AreaChart data={chartData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
                 <XAxis 
                   dataKey="month" 
                   className="text-xs fill-gray-600 dark:fill-gray-400"
-                  tick={{ fontSize: 12 }}
-                  interval={chartData.length > 12 ? 'preserveStartEnd' : 0}
+                  tick={{ fontSize: 10 }}
+                  interval={chartData.length > 6 ? 'preserveStartEnd' : 0}
                 />
                 <YAxis 
                   className="text-xs fill-gray-600 dark:fill-gray-400"
                   tickFormatter={(value) => `₹${(value / 1000).toFixed(0)}k`}
-                  tick={{ fontSize: 12 }}
+                  tick={{ fontSize: 10 }}
+                  width={50}
                 />
                 <ChartTooltip 
                   content={<ChartTooltipContent />}
@@ -82,14 +83,14 @@ const SavingsChart: React.FC<SavingsChartProps> = ({ monthlyData }) => {
                   stroke="#10b981" 
                   fill="#10b981"
                   fillOpacity={0.3}
-                  strokeWidth={3}
+                  strokeWidth={2}
                 />
               </AreaChart>
             </ResponsiveContainer>
           </ChartContainer>
         ) : (
-          <div className="h-[300px] flex items-center justify-center text-gray-500 dark:text-gray-400">
-            <p>No savings data available</p>
+          <div className="h-[250px] sm:h-[300px] flex items-center justify-center text-gray-500 dark:text-gray-400">
+            <p className="text-sm sm:text-base">No savings data available</p>
           </div>
         )}
       </CardContent>
