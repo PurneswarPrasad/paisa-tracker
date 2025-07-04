@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Plus, TrendingUp, TrendingDown, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -7,6 +6,7 @@ import ExpenseForm from '@/components/ExpenseForm';
 import ExpenseList from '@/components/ExpenseList';
 import CategorySummary from '@/components/CategorySummary';
 import PRDModal from '@/components/PRDModal';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export interface Expense {
   id: string;
@@ -84,16 +84,22 @@ const Index = () => {
   const totalExpenses = totalNeeds + totalWants;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">
-            पैसा Tracker
-          </h1>
-          <p className="text-gray-600 text-lg">
-            Track every penny, achieve every dream
-          </p>
+          <div className="flex justify-between items-start mb-4">
+            <div></div>
+            <div className="flex-1">
+              <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-100 mb-2">
+                पैसा Tracker
+              </h1>
+              <p className="text-gray-600 dark:text-gray-300 text-lg">
+                Track every penny, achieve every dream
+              </p>
+            </div>
+            <ThemeToggle />
+          </div>
           <div className="flex justify-center gap-4 mt-4">
             <Button 
               onClick={() => setShowPRD(true)}
@@ -109,45 +115,45 @@ const Index = () => {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-white/80 backdrop-blur-sm border-green-200">
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-green-200 dark:border-green-700">
             <CardHeader className="pb-3">
-              <CardTitle className="text-green-700 flex items-center gap-2">
+              <CardTitle className="text-green-700 dark:text-green-400 flex items-center gap-2">
                 <TrendingDown className="w-5 h-5" />
                 Needs
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-green-800">
+              <div className="text-2xl font-bold text-green-800 dark:text-green-300">
                 ₹{totalNeeds.toLocaleString('en-IN')}
               </div>
-              <p className="text-sm text-gray-600">Essential expenses</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Essential expenses</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 backdrop-blur-sm border-orange-200">
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-orange-200 dark:border-orange-700">
             <CardHeader className="pb-3">
-              <CardTitle className="text-orange-700 flex items-center gap-2">
+              <CardTitle className="text-orange-700 dark:text-orange-400 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5" />
                 Wants
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-orange-800">
+              <div className="text-2xl font-bold text-orange-800 dark:text-orange-300">
                 ₹{totalWants.toLocaleString('en-IN')}
               </div>
-              <p className="text-sm text-gray-600">Lifestyle expenses</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">Lifestyle expenses</p>
             </CardContent>
           </Card>
 
-          <Card className="bg-white/80 backdrop-blur-sm border-blue-200">
+          <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border-blue-200 dark:border-blue-700">
             <CardHeader className="pb-3">
-              <CardTitle className="text-blue-700">Total Spent</CardTitle>
+              <CardTitle className="text-blue-700 dark:text-blue-400">Total Spent</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-blue-800">
+              <div className="text-2xl font-bold text-blue-800 dark:text-blue-300">
                 ₹{totalExpenses.toLocaleString('en-IN')}
               </div>
-              <p className="text-sm text-gray-600">This month</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">This month</p>
             </CardContent>
           </Card>
         </div>
@@ -181,9 +187,9 @@ const Index = () => {
         </div>
 
         {/* Recent Expenses */}
-        <Card className="bg-white/80 backdrop-blur-sm">
+        <Card className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle className="text-gray-800">Recent Expenses</CardTitle>
+            <CardTitle className="text-gray-800 dark:text-gray-100">Recent Expenses</CardTitle>
           </CardHeader>
           <CardContent>
             <ExpenseList 

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Expense } from '@/pages/Index';
@@ -32,16 +31,16 @@ const CategorySummary: React.FC<CategorySummaryProps> = ({
   
   const colorClasses = {
     green: {
-      border: 'border-green-200',
-      header: 'text-green-700',
+      border: 'border-green-200 dark:border-green-700',
+      header: 'text-green-700 dark:text-green-400',
       bar: 'bg-green-500',
-      amount: 'text-green-800'
+      amount: 'text-green-800 dark:text-green-300'
     },
     orange: {
-      border: 'border-orange-200',
-      header: 'text-orange-700', 
+      border: 'border-orange-200 dark:border-orange-700',
+      header: 'text-orange-700 dark:text-orange-400', 
       bar: 'bg-orange-500',
-      amount: 'text-orange-800'
+      amount: 'text-orange-800 dark:text-orange-300'
     }
   };
 
@@ -49,12 +48,12 @@ const CategorySummary: React.FC<CategorySummaryProps> = ({
 
   if (sortedCategories.length === 0) {
     return (
-      <Card className={`bg-white/80 backdrop-blur-sm ${classes.border}`}>
+      <Card className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm ${classes.border}`}>
         <CardHeader>
           <CardTitle className={classes.header}>{title}</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-center py-6 text-gray-500">
+          <div className="text-center py-6 text-gray-500 dark:text-gray-400">
             <p>No {type} expenses yet</p>
             <p className="text-sm">Add some expenses to see the breakdown</p>
           </div>
@@ -64,7 +63,7 @@ const CategorySummary: React.FC<CategorySummaryProps> = ({
   }
 
   return (
-    <Card className={`bg-white/80 backdrop-blur-sm ${classes.border}`}>
+    <Card className={`bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm ${classes.border}`}>
       <CardHeader>
         <CardTitle className={classes.header}>{title}</CardTitle>
       </CardHeader>
@@ -76,20 +75,20 @@ const CategorySummary: React.FC<CategorySummaryProps> = ({
             return (
               <div key={category} className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium text-gray-700 truncate">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 truncate">
                     {category}
                   </span>
                   <span className={`text-sm font-bold ${classes.amount}`}>
                     ₹{amount.toLocaleString('en-IN')}
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
                   <div 
                     className={`${classes.bar} h-2 rounded-full transition-all duration-300`}
                     style={{ width: `${percentage}%` }}
                   />
                 </div>
-                <div className="text-xs text-gray-500 text-right">
+                <div className="text-xs text-gray-500 dark:text-gray-400 text-right">
                   {percentage.toFixed(1)}% of {type}
                 </div>
               </div>
