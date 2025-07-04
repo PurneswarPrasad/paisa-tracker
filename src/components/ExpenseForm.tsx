@@ -63,15 +63,10 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <Card className="w-full max-w-md bg-white">
+      <Card className="w-full max-w-md bg-white dark:bg-gray-800">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
-          <CardTitle className="text-xl font-bold">Add New Expense</CardTitle>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={onClose}
-            className="h-8 w-8 p-0"
-          >
+          <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100">Add New Expense</CardTitle>
+          <Button variant="ghost" size="sm" onClick={onClose} className="h-8 w-8 p-0">
             <X className="h-4 w-4" />
           </Button>
         </CardHeader>
@@ -115,7 +110,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
                     }}
                     className="text-green-600"
                   />
-                  <span className="text-green-700 font-medium">Needs</span>
+                  <span className="text-green-700 dark:text-green-400 font-medium">Needs</span>
                 </label>
                 <label className="flex items-center space-x-2 cursor-pointer">
                   <input
@@ -128,7 +123,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
                     }}
                     className="text-orange-600"
                   />
-                  <span className="text-orange-700 font-medium">Wants</span>
+                  <span className="text-orange-700 dark:text-orange-400 font-medium">Wants</span>
                 </label>
               </div>
             </div>
@@ -139,7 +134,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
                 <SelectTrigger>
                   <SelectValue placeholder="Select a category" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-white dark:bg-gray-800 z-50">
                   {currentCategories.map((cat) => (
                     <SelectItem key={cat} value={cat}>
                       {cat}
@@ -150,12 +145,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({
             </div>
 
             <div className="flex gap-3 pt-4">
-              <Button 
-                type="button" 
-                variant="outline" 
-                onClick={onClose}
-                className="flex-1"
-              >
+              <Button type="button" variant="outline" onClick={onClose} className="flex-1">
                 Cancel
               </Button>
               <Button 

@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import { Plus, TrendingUp, TrendingDown, FileText, DollarSign, PiggyBank } from 'lucide-react';
+import { Plus, TrendingUp, TrendingDown, DollarSign, PiggyBank } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ExpenseForm from '@/components/ExpenseForm';
@@ -13,7 +12,6 @@ import InvestmentList from '@/components/InvestmentList';
 import MonthlyTracker from '@/components/MonthlyTracker';
 import ExpenseChart from '@/components/ExpenseChart';
 import SavingsChart from '@/components/SavingsChart';
-import PRDModal from '@/components/PRDModal';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export interface Expense {
@@ -256,12 +254,6 @@ const Index = () => {
             </div>
             <ThemeToggle />
           </div>
-          <div className="flex justify-center gap-4 mt-4">
-            <Button onClick={() => setShowPRD(true)} variant="outline" size="sm">
-              <FileText className="w-4 h-4 mr-2" />
-              View PRD
-            </Button>
-          </div>
         </div>
 
         {/* Month Selector */}
@@ -453,10 +445,6 @@ const Index = () => {
             onAddInvestment={addInvestment}
             onClose={() => setShowInvestmentForm(false)}
           />
-        )}
-
-        {showPRD && (
-          <PRDModal onClose={() => setShowPRD(false)} />
         )}
       </div>
     </div>

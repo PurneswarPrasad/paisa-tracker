@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Calendar } from 'lucide-react';
 import { MonthlyData } from '@/pages/Index';
 
 interface MonthlyTrackerProps {
@@ -23,13 +24,16 @@ const MonthlyTracker: React.FC<MonthlyTrackerProps> = ({
           <span>Monthly Overview</span>
           <div className="flex items-center gap-2">
             <Label htmlFor="month-select" className="text-sm">Month:</Label>
-            <Input
-              id="month-select"
-              type="month"
-              value={selectedMonth}
-              onChange={(e) => onMonthChange(e.target.value)}
-              className="w-40"
-            />
+            <div className="relative">
+              <Input
+                id="month-select"
+                type="month"
+                value={selectedMonth}
+                onChange={(e) => onMonthChange(e.target.value)}
+                className="w-40 pr-10 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-100"
+              />
+              <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500 dark:text-gray-400 pointer-events-none" />
+            </div>
           </div>
         </CardTitle>
       </CardHeader>
