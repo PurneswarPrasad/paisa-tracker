@@ -290,9 +290,6 @@ const Index = () => {
             </CardHeader>
             <CardContent className="p-3 sm:p-6 pt-0">
               <div className="text-lg sm:text-2xl font-bold text-blue-800 dark:text-blue-300">
-                ₹{(totalIncome / 1000).toFixed(0)}k
-              </div>
-              <div className="text-xs text-blue-600 dark:text-blue-400 sm:hidden">
                 ₹{totalIncome.toLocaleString('en-IN')}
               </div>
             </CardContent>
@@ -307,9 +304,6 @@ const Index = () => {
             </CardHeader>
             <CardContent className="p-3 sm:p-6 pt-0">
               <div className="text-lg sm:text-2xl font-bold text-green-800 dark:text-green-300">
-                ₹{(totalNeeds / 1000).toFixed(0)}k
-              </div>
-              <div className="text-xs text-green-600 dark:text-green-400 sm:hidden">
                 ₹{totalNeeds.toLocaleString('en-IN')}
               </div>
             </CardContent>
@@ -324,9 +318,6 @@ const Index = () => {
             </CardHeader>
             <CardContent className="p-3 sm:p-6 pt-0">
               <div className="text-lg sm:text-2xl font-bold text-orange-800 dark:text-orange-300">
-                ₹{(totalWants / 1000).toFixed(0)}k
-              </div>
-              <div className="text-xs text-orange-600 dark:text-orange-400 sm:hidden">
                 ₹{totalWants.toLocaleString('en-IN')}
               </div>
             </CardContent>
@@ -342,9 +333,6 @@ const Index = () => {
             </CardHeader>
             <CardContent className="p-3 sm:p-6 pt-0">
               <div className="text-lg sm:text-2xl font-bold text-purple-800 dark:text-purple-300">
-                ₹{(totalInvestments / 1000).toFixed(0)}k
-              </div>
-              <div className="text-xs text-purple-600 dark:text-purple-400 sm:hidden">
                 ₹{totalInvestments.toLocaleString('en-IN')}
               </div>
             </CardContent>
@@ -370,14 +358,7 @@ const Index = () => {
                   ? 'text-emerald-800 dark:text-emerald-300' 
                   : 'text-red-800 dark:text-red-300'
               }`}>
-                ₹{(Math.abs(totalSavings) / 1000).toFixed(0)}k
-              </div>
-              <div className={`text-xs sm:hidden ${
-                totalSavings >= 0 
-                  ? 'text-emerald-600 dark:text-emerald-400' 
-                  : 'text-red-600 dark:text-red-400'
-              }`}>
-                ₹{totalSavings.toLocaleString('en-IN')}
+                ₹{Math.abs(totalSavings).toLocaleString('en-IN')}
               </div>
             </CardContent>
           </Card>
