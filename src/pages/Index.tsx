@@ -12,6 +12,7 @@ import InvestmentList from '@/components/InvestmentList';
 import MonthlyTracker from '@/components/MonthlyTracker';
 import ExpenseChart from '@/components/ExpenseChart';
 import SavingsChart from '@/components/SavingsChart';
+import CashFlowPrediction from '@/components/CashFlowPrediction';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export interface Expense {
@@ -267,6 +268,14 @@ const Index = () => {
             investments: totalInvestments,
             savings: totalSavings
           }}
+        />
+
+        {/* Cash Flow Prediction */}
+        <CashFlowPrediction
+          currentIncome={totalIncome}
+          currentExpenses={totalExpenses}
+          currentInvestments={totalInvestments}
+          selectedMonth={selectedMonth}
         />
 
         {/* Summary Cards */}
