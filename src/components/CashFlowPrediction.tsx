@@ -40,6 +40,17 @@ const CashFlowPrediction: React.FC<CashFlowPredictionProps> = ({
   
   const isPositive = projectedSavings >= 0;
   
+  console.log('Cash Flow Debug:', {
+    currentIncome,
+    currentExpenses,
+    currentDate,
+    daysInMonth,
+    averageDailySpending,
+    projectedTotalSpending,
+    projectedSavings,
+    isPositive
+  });
+  
   return (
     <Card className="mb-4 sm:mb-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 backdrop-blur-sm border-blue-200 dark:border-blue-700">
       <CardHeader className="p-4 sm:p-6 pb-2 sm:pb-3">
@@ -61,7 +72,7 @@ const CashFlowPrediction: React.FC<CashFlowPredictionProps> = ({
           <div className={`text-2xl sm:text-3xl font-bold ${
             isPositive ? 'text-green-800 dark:text-green-200' : 'text-red-800 dark:text-red-200'
           }`}>
-            ₹{Math.abs(projectedSavings).toFixed(0)}
+            ₹{Math.abs(projectedSavings).toLocaleString('en-IN')}
           </div>
           
           <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center mt-4">
@@ -74,7 +85,7 @@ const CashFlowPrediction: React.FC<CashFlowPredictionProps> = ({
             <div className="p-2 sm:p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
               <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Daily Avg Spending</div>
               <div className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
-                ₹{averageDailySpending.toFixed(0)}
+                ₹{averageDailySpending.toLocaleString('en-IN', { maximumFractionDigits: 0 })}
               </div>
             </div>
           </div>
