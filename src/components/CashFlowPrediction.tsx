@@ -24,28 +24,36 @@ const CashFlowPrediction: React.FC<CashFlowPredictionProps> = ({
   // Check if selected month is current month
   const isCurrentMonth = selectedMonth === now.toISOString().slice(0, 7);
   
-  // Only show prediction for current month
-  if (!isCurrentMonth) {
+  // Only show prediction for current month and after at least 3 days of data
+  if (!isCurrentMonth || currentDate < 3) {
     return null;
   }
   
-  // Calculate average daily spending = ₹X / Y (where X is current expenses, Y is current date)
+  // Calculate average daily spending from expenses so far
   const averageDailySpending = currentExpenses / currentDate;
   
-  // Multiply by total days in month to get projected total spending
-  const projectedTotalSpending = averageDailySpending * daysInMonth;
+  // Calculate remaining days in month
+  const remainingDays = daysInMonth - currentDate;
   
-  // Projected Savings = Income - Projected Spending
+  // Project spending for remaining days only
+  const projectedRemainingSpending = averageDailySpending * remainingDays;
+  
+  // Total projected spending for the month = current expenses + projected remaining
+  const projectedTotalSpending = currentExpenses + projectedRemainingSpending;
+  
+  // Projected Savings = Income - Projected Total Spending
   const projectedSavings = currentIncome - projectedTotalSpending;
   
   const isPositive = projectedSavings >= 0;
   
-  console.log('Cash Flow Debug:', {
+  console.log('Cash Flow Debug - Fixed:', {
     currentIncome,
     currentExpenses,
     currentDate,
+    remainingDays,
     daysInMonth,
     averageDailySpending,
+    projectedRemainingSpending,
     projectedTotalSpending,
     projectedSavings,
     isPositive
@@ -77,9 +85,9 @@ const CashFlowPrediction: React.FC<CashFlowPredictionProps> = ({
           
           <div className="grid grid-cols-2 gap-3 sm:gap-4 text-center mt-4">
             <div className="p-2 sm:p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
-              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Days Passed</div>
+              <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Days Remaining</div>
               <div className="text-lg sm:text-xl font-bold text-gray-800 dark:text-gray-200">
-                {currentDate}
+                {remainingDays}
               </div>
             </div>
             <div className="p-2 sm:p-3 bg-white/50 dark:bg-gray-800/50 rounded-lg">
